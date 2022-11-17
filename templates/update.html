@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>IFSP - Campus Pirituba</title>        
+  </head>
+  <body>
+    <section>
+      <div>
+        <h1>IFSP - Campus Pirituba</h1>        
+        <form action="/" method="POST">          
+          <div>            
+            <ul>
+                <li>
+                    <label for="contato-nome">Nome</label>
+                    <input type="text" name="nome" id="contato-nome" value= {{contato['nome']}}
+                </li>
+              <br>              
+                <li>
+                    <label for="contato-email">E-Mail</label>
+                    <input type="email" name="email" id="contato-email" value= {{contato['email']}}
+                </li>
+                <li>
+                    <label for="contato-telefone">Telefone (99) 99999-9999 </label>
+                    <input type="tel" name="telefone" id="contato-telefone" value= {{contato['telefone']}}
+                </li>
+                <li>                                 
+                   <label for="contato-assunto">Assunto</label> 
+                   {% if contato['assunto'] == "Reclamação" %}  
+                    <select name="assunto" id="contato-assunto" required >
+                     <option value=""> -- Selecione --</option>                        
+                     <option value="Reclamação" selected>Reclamação</option>
+                     <option value="Sugestão">Sugestão</option>
+                   </select>    
+                   {% endif %} 
+                   {% if contato['assunto'] == "Sugestão" %}  
+                    <select name="assunto" id="contato-assunto" required >
+                     <option value=""> -- Selecione --</option>                        
+                     <option value="Reclamação">Reclamação</option>
+                     <option value="Sugestão" selected>Sugestão</option>
+                   </select>    
+                   {% endif %}                                     
+                </li>
+                <li>
+                    <label for="contato-mensagem">Mensagem</label>
+                    <textarea name="mensagem" id="contato-mensagem">{{contato['mensagem']}}</textarea>
+                </li>
+                <li>
+                    <fieldset>
+                        <legend>Opções de Resposta</legend>
+                        <label for="contato-resposta-email">E-Mail
+                      {% if contato['resposta'] == "E-mail" %}  
+   <input id="contato-resposta-email" type="radio" name="resposta" value="E-mail" checked/>
+  <input id="contato-resposta-telefone" type="radio" name="resposta" value="Telefone"/>         
+                      {% endif %}   
+                        </label>
+                        <label for="contato-resposta-telefone">Telefone</label>
+                      {% if contato['resposta'] == "Telefone" %}  
+ <input id="contato-resposta-telefone" type="radio" name="resposta" value="Telefone" checked/>
+ <input id="contato-resposta-email" type="radio" name="resposta" value="E-mail"/>                     
+                      {% endif %} 
+                    </fieldset>
+                </li>
+            </ul>            
+            <input type="submit" value="Salvar" name="save" />            
+          </div>
+        </form>    
+      </div>
+    </section>
+  </body>
+</html>
